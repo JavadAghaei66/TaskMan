@@ -1,0 +1,74 @@
+using System.Text.Json;
+using TaskMan.Domain;
+using TaskMan.Common;
+
+namespace TaskMan.Repository;
+
+class TaskRepository : ITaskRepository
+{
+    public TaskRepository() { }
+
+    public bool AddTask(TaskItem task)
+    {
+        if (task is null)
+        {
+            Console.WriteLine("Invalid Task.");
+            return false;
+        }
+
+        List<TaskItem> taskItems = LoadTasks();
+        taskItems.Add(task);
+
+        SaveTasks(taskItems);
+
+        return true;
+    }
+
+    public bool SaveTasks(List<TaskItem> tasks)
+    {
+        try
+        {
+            string updatedJson = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(Constants.DBFilePath, updatedJson);
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"error occurred while Saving Tasks.\n{e.Message}\n {e.InnerException ?? null}");
+            return false;
+        }
+    }
+
+    public List<TaskItem> LoadTasks()
+    {
+        if (File.Exists(Constants.DBFilePath))
+        {
+            try
+            {
+                string json = File.ReadAllText(Constants.DBFilePath);
+                return JsonSerializer.Deserialize<List<TaskItem>>(json) ?? new List<TaskItem>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"error occurred while Reading Tasks.\n{e.Message}\n {e.InnerException ?? null}");
+            }
+        }
+        return new List<TaskItem>();
+    }
+
+    public bool RemoveByID(int taskID)
+    {
+        List<TaskItem> tasks = LoadTasks();
+
+        TaskItem? taskToRemove = tasks.FirstOrDefault(t => t.Id == taskID);
+
+        if (taskToRemove is null)
+        {
+            return false;
+        }
+
+        bool removed = tasks.Remove(taskToRemove);
+        SaveTasks(tasks);
+        return true;
+    }
+}
