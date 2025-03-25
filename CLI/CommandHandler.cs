@@ -9,7 +9,8 @@ class CommandHandler
     {
         _commands = new Dictionary<string, CommandBase>(){
             {"list",new ListCommand(taskService)},
-            {"add",new AddCommand(taskService)}
+            {"add",new AddCommand(taskService)},
+            {"remove",new RemoveCommand(taskService)}
         };
     }
 

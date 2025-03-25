@@ -1,14 +1,5 @@
 [
   {
-    "Id": 2,
-    "Title": "tt",
-    "Description": "tt",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": null,
-    "Priority": 1
-  },
-  {
     "Id": 3,
     "Title": "test",
     "Description": "testy",
@@ -18,15 +9,6 @@
     "Priority": 0
   },
   {
-    "Id": 4,
-    "Title": "new T",
-    "Description": "its a new task from new interface",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": null,
-    "Priority": 1
-  },
-  {
     "Id": 5,
     "Title": "new ",
     "Description": "new is better",
@@ -34,23 +16,5 @@
     "CompletedAt": null,
     "DueDate": null,
     "Priority": 2
-  },
-  {
-    "Id": 6,
-    "Title": "new",
-    "Description": "",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": null,
-    "Priority": 1
-  },
-  {
-    "Id": 7,
-    "Title": "dlkagf",
-    "Description": "",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": null,
-    "Priority": 0
   }
 ]

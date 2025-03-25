@@ -1,5 +1,6 @@
 using TaskMan.Domain;
 using TaskMan.Repository;
+using Spectre.Console;
 
 namespace TaskMan.Application;
 
@@ -38,7 +39,7 @@ class TaskService
     {
         if (taskID <= 0)
         {
-            Console.WriteLine("❌ Task ID cannot be zero or negative.");
+            AnsiConsole.MarkupLine("[red]❌ Task ID cannot be zero or negative.[/]");
             return;
         }
 
@@ -46,12 +47,12 @@ class TaskService
 
         if (!result)
         {
-            Console.WriteLine("⚠️ Task not found! Try again.");
+            AnsiConsole.MarkupLine("[yellow]⚠️ Task not found! Try again.[/]");
             return;
         }
         else
         {
-            Console.WriteLine("✅ Task removed successfully.");
+            AnsiConsole.MarkupLine("[green]✅ Task removed successfully.[/]");
             return;
         }
     }
