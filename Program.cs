@@ -1,5 +1,6 @@
 ﻿using TaskMan.Application;
 using TaskMan.Repository;
+using TaskMan.CLI;
 
 class Program
 {

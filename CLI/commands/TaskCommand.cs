@@ -1,9 +1,14 @@
 using Spectre.Console.Cli;
 using TaskMan.Application;
 
-public class ListCommand : CommandBase
+namespace TaskMan.CLI;
+class ListCommand : CommandBase
 {
     private readonly TaskService _taskService;
+    public ListCommand(TaskService taskService)
+    {
+        _taskService = taskService;
+    }
 
     public override string Name => "list";
 

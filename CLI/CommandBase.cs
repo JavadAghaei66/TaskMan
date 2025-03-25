@@ -1,3 +1,4 @@
+namespace TaskMan.CLI;
 public abstract class CommandBase
 {
     public abstract string Name { get; }

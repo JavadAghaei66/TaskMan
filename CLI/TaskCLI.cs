@@ -2,6 +2,7 @@ using TaskMan.Application;
 using TaskMan.Domain;
 using Spectre.Console;
 
+namespace TaskMan.CLI;
 class TaskCLI
 {
     private readonly TaskService _taskService;
