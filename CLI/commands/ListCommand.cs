@@ -21,7 +21,7 @@ class ListCommand : CommandBase
         {
             // list high priority if  needed
             Console.WriteLine("loading high priority tasks...");
-            
+
         }
 
         var table = new Table();
@@ -41,7 +41,7 @@ class ListCommand : CommandBase
             table.AddRow(
                 item.Id.ToString(),
                 item.Title,
-                item.Description,
+                string.IsNullOrEmpty(item.Description) ? "No Description" : item.Description,
                 $"[bold {GetPriorityColor(item.Priority)}]{item.Priority.ToString()}[/]",
                 item.DueDate?.ToString("yyyy-MM-dd") ?? "[grey]No Due Date[/]",
                 item.IsCompleted ? "[green]✔[/]" : "[red]✘[/]"

@@ -8,7 +8,8 @@ class CommandHandler
     public CommandHandler(TaskService taskService)
     {
         _commands = new Dictionary<string, CommandBase>(){
-            {"list",new ListCommand(taskService)}
+            {"list",new ListCommand(taskService)},
+            {"add",new AddCommand(taskService)}
         };
     }
 
