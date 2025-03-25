@@ -1,57 +1,28 @@
+using Spectre.Console;
 using TaskMan.Application;
 using TaskMan.Domain;
-using Spectre.Console;
 
 namespace TaskMan.CLI;
-class TaskCLI
+class ListCommand : CommandBase
 {
     private readonly TaskService _taskService;
-    private readonly CommandHandler _commandHandler;
-
-    public TaskCLI(TaskService taskService, CommandHandler commandHandler)
+    public ListCommand(TaskService taskService)
     {
         _taskService = taskService;
-        _commandHandler = commandHandler;
     }
 
-    public void Start()
-    {
-        while (true)
-        {
-            Console.Write("> ");
-            string? input = Console.ReadLine();
+    public override string Name => "list";
 
-            if (string.IsNullOrEmpty(input))
-                continue;
-
-            _commandHandler.ExecuteCommand(input);
-        }
-    }
-
-    private void AddTask()
-    {
-        // gettig new task 
-        Console.WriteLine("Enter Task Title:");
-        string title = Console.ReadLine()!;
-        Console.WriteLine("Enter Task Description:");
-        string description = Console.ReadLine()!;
-        Console.WriteLine("Enter Task Priority (High/Medium/Low):");
-        string priority = Console.ReadLine()!;
-
-        // create new task
-        _taskService.AddTask(title, description, priority, false);
-    }
-
-    private void RemoveTask()
-    {
-        Console.WriteLine("Enter Task ID that you want to be removed from your list:");
-        int userinput = int.Parse(Console.ReadLine()!);
-        _taskService.RemoveTaskByID(userinput);
-    }
-
-    private void ListTasks()
+    public override void Execute(string[] args)
     {
         List<TaskItem> taskItems = _taskService.LoadTasks();
+
+        if (args.Length > 0 && (args[0] == "-high" || args[0] == "-h"))
+        {
+            // list high priority if  needed
+            Console.WriteLine("loading high priority tasks...");
+            
+        }
 
         var table = new Table();
 

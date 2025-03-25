@@ -12,13 +12,17 @@ class CommandHandler
         };
     }
 
-    public void ExecuteCommand(string[] args)
+    public void ExecuteCommand(string commandString)
     {
-        if (args.Length == 0)
+
+        if (string.IsNullOrWhiteSpace(commandString))
         {
-            Console.WriteLine("Please enter a command.");
+            Console.WriteLine("invalid command!");
             return;
         }
+
+        // remove extra spaces between commands
+        string[] args = commandString.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
         string commandName = args[0].ToLower();
         string[] commandArgs = args.Skip(1).ToArray();
@@ -30,7 +34,7 @@ class CommandHandler
         }
         else
         {
-            Console.WriteLine("Command not found.");
+            Console.WriteLine($"Command '{commandName}' not found.");
         }
     }
 }

@@ -8,7 +8,8 @@ class Program
     {
         TaskRepository tRepository = new();
         TaskService tService = new(tRepository);
-        TaskCLI tCLI = new(tService);
+        CommandHandler cHandler = new(tService);
+        TaskCLI tCLI = new(tService,cHandler);
 
         // start Interface
         tCLI.Start();
