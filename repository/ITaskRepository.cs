@@ -8,4 +8,5 @@ interface ITaskRepository
     List<TaskItem> LoadTasks();
     bool SaveTasks(List<TaskItem> tasks);
     bool RemoveByID(int taskID);
+    bool RemoveAll();
 }

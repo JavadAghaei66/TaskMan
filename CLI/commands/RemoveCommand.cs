@@ -15,6 +15,11 @@ class RemoveCommand : CommandBase
 
     public override void Execute(string[] args)
     {
+        if (args.Length > 0 && (args[0] == "-a" || args[0] == "-all"))
+        {
+            _taskSrvice.RemoveAllTasks();
+            return;
+        }
 
         if (args.Length > 0)
         {

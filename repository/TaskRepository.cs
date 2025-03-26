@@ -71,4 +71,11 @@ class TaskRepository : ITaskRepository
         SaveTasks(tasks);
         return true;
     }
+
+    public bool RemoveAll()
+    {
+        List<TaskItem> tasks = [];
+        bool result = SaveTasks(tasks);
+        return result;
+    }
 }

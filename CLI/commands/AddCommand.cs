@@ -61,7 +61,7 @@ class AddCommand : CommandBase
         {
             int year;
             int day;
-            
+
             while (true)
             {
                 year = AnsiConsole.Ask<int>("[bold green]Enter year (e.g., 2025):[/]");

@@ -1,74 +1,11 @@
 [
   {
-    "Id": 3,
-    "Title": "test",
-    "Description": "testy",
+    "Id": 1,
+    "Title": "ad",
+    "Description": "ad",
     "IsCompleted": false,
     "CompletedAt": null,
-    "DueDate": null,
+    "DueDate": "2025-04-18T00:56:47.6179739+03:30",
     "Priority": 0
-  },
-  {
-    "Id": 6,
-    "Title": "new task",
-    "Description": "",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": null,
-    "Priority": 2
-  },
-  {
-    "Id": 7,
-    "Title": "newnwe",
-    "Description": "mewmw",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": "2025-03-27T23:12:22.7628135+03:30",
-    "Priority": 1
-  },
-  {
-    "Id": 8,
-    "Title": "mewmew",
-    "Description": "mewmewmewmew",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": "2026-06-22T00:00:00",
-    "Priority": 2
-  },
-  {
-    "Id": 9,
-    "Title": "hinew",
-    "Description": "its new ",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": "2023-01-31T00:00:00",
-    "Priority": 0
-  },
-  {
-    "Id": 10,
-    "Title": "kladsklf",
-    "Description": "kladsf",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": "2026-11-16T23:55:15.1008994+03:30",
-    "Priority": 0
-  },
-  {
-    "Id": 11,
-    "Title": "newnew",
-    "Description": "new is better i guess",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": "2025-01-22T00:00:00",
-    "Priority": 2
-  },
-  {
-    "Id": 12,
-    "Title": "new tit",
-    "Description": "new tit is good",
-    "IsCompleted": false,
-    "CompletedAt": null,
-    "DueDate": "2025-12-31T00:00:00",
-    "Priority": 1
   }
 ]

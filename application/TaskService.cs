@@ -73,4 +73,12 @@ class TaskService
             _ => throw new ArgumentException("Invalid priority value. Please enter High, Medium, or Low.")
         };
     }
+
+    public void RemoveAllTasks()
+    {
+        if (_taskRepository.RemoveAll())
+            AnsiConsole.MarkupLine("[green]✅ All Tasks have been removed successfully.[/]");
+        else
+            AnsiConsole.MarkupLine("[red]❌ Failed removing tasks. try again.[/]");
+    }
 }
