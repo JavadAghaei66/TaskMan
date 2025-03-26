@@ -10,7 +10,8 @@ class CommandHandler
         _commands = new Dictionary<string, CommandBase>(){
             {"list",new ListCommand(taskService)},
             {"add",new AddCommand(taskService)},
-            {"remove",new RemoveCommand(taskService)}
+            {"remove",new RemoveCommand(taskService)},
+            {"exit",new ExitCommand()},
         };
     }
 
@@ -23,7 +24,7 @@ class CommandHandler
             return;
         }
 
-        // remove extra spaces between commands
+        // remove extra spaces between commands and split with ' '
         string[] args = commandString.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
         string commandName = args[0].ToLower();
