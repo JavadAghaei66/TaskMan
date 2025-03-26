@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using TaskMan.CLI;
 
 namespace TaskMan.CLI;
 
