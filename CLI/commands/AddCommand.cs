@@ -59,7 +59,18 @@ class AddCommand : CommandBase
         }
         else
         {
-            int year = AnsiConsole.Ask<int>("[bold green]Enter year (e.g., 2025):[/]");
+            int year;
+            int day;
+            
+            while (true)
+            {
+                year = AnsiConsole.Ask<int>("[bold green]Enter year (e.g., 2025):[/]");
+
+                if (year >= DateTime.Now.Year)
+                    break;
+                else
+                    AnsiConsole.MarkupLine("[bold yellow]Invalid year. try again.[/]");
+            }
 
             var months = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames
                        .Where(m => !string.IsNullOrEmpty(m))
@@ -70,11 +81,17 @@ class AddCommand : CommandBase
                .Title("[bold yellow]? Select month:[/]")
                .AddChoices(months)
             );
+            while (true)
+            {
+                day = AnsiConsole.Ask<int>("[bold green]Enter day (1-31):[/]");
 
-            int day = AnsiConsole.Ask<int>("[bold green]Enter day (1-31):[/]");
+                if (day >= 1 && day <= 31)
+                    break;
+                else
+                    AnsiConsole.MarkupLine("[bold yellow]Invalid day of month. try again.[/]");
+            }
 
             int monthNumber = Array.IndexOf(months, selectedMonth) + 1;
-
 
             dueDate = new DateTime(year, monthNumber, day);
             AnsiConsole.MarkupLine($"[bold green]✅ Due date set to: {dueDate:yyyy-MM-dd} ({selectedMonth})[/]");
