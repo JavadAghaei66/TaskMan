@@ -17,54 +17,36 @@ class ListCommand : CommandBase
     {
         List<TaskItem> taskItems = [];
         Table table = new();
+        string header = "Task List";
+
+
+        Dictionary<string, Priority> priorityMap = new()
+        {
+            {"-high",Priority.High} , {"-h",Priority.High},
+            {"-medium",Priority.Medium} , {"-m",Priority.Medium},
+            {"-low",Priority.Low} , {"-l",Priority.Low}
+        };
+
 
         if (args.Length == 0)
         {
             taskItems = _taskService.LoadTasks();
-
-            TableDrawer.DrawTaskTable(
-                table: table,
-                tasks: taskItems,
-                pannelHeader: "Task List"
-            );
-
-            return;
         }
-
-        if (args.Length == 1 && (args[0] == "-high" || args[0] == "-h"))
+        else if (args.Length == 1 && priorityMap.TryGetValue(args[0], out Priority priority))
         {
-            taskItems = _taskService.GetByPriority(Priority.High);
-
-            TableDrawer.DrawTaskTable(
-                table: table,
-                tasks: taskItems,
-                pannelHeader: "High Priority Tasks"
-            );
-            return;
+            taskItems = _taskService.GetByPriority(priority);
+            header = $"{priority} Priority Tasks";
         }
-
-        if (args.Length == 1 && (args[0] == "-medium" || args[0] == "-m"))
+        else
         {
-            taskItems = _taskService.GetByPriority(Priority.Medium);
-            TableDrawer.DrawTaskTable(
-                table: table,
-                tasks: taskItems,
-                pannelHeader: "Medium Priority Tasks"
-            );
+            AnsiConsole.MarkupLine($"[bold red]Invalid argument: '{args[0]}'[/]");
             return;
         }
 
-        if (args.Length == 1 && (args[0] == "-low" || args[0] == "-l"))
-        {
-            taskItems = _taskService.GetByPriority(Priority.Low);
-            TableDrawer.DrawTaskTable(
-                table: table,
-                tasks: taskItems,
-                pannelHeader: "Low Priority Tasks"
-            );
-            return;
-        }
-
-        AnsiConsole.MarkupLine($"[bold red]Invalid argument: '{args[0]}'[/]");
+        TableDrawer.DrawTaskTable(
+            table: table,
+            tasks: taskItems,
+            pannelHeader: header
+        );
     }
 }
