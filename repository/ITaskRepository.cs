@@ -9,4 +9,5 @@ interface ITaskRepository
     bool SaveTasks(List<TaskItem> tasks);
     bool RemoveByID(int taskID);
     bool RemoveAll();
+    List<TaskItem> SearchTask(string searchString);
 }

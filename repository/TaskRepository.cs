@@ -26,6 +26,11 @@ class TaskRepository : ITaskRepository
 
     public bool SaveTasks(List<TaskItem> tasks)
     {
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            tasks[i].Id = i + 1;
+        }
+
         try
         {
             string updatedJson = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
@@ -78,4 +83,14 @@ class TaskRepository : ITaskRepository
         bool result = SaveTasks(tasks);
         return result;
     }
+
+    public List<TaskItem> SearchTask(string searchString)
+    {
+        List<TaskItem> searchResult = LoadTasks()
+        .Where(item => item.Title.Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+        .ToList();
+
+        return searchResult;
+    }
+
 }

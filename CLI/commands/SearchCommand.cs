@@ -20,27 +20,23 @@ class SearchCommand : CommandBase
             AnsiConsole.MarkupLine("[bold red]please add your task title after search command.[/]");
             return;
         }
-        else
+
+        string searchString = string.Join(" ", args);
+
+        List<TaskItem> searchResult = _taskService.SearchTask(searchString);
+
+        // draw result table 
+        Table table = new();
+        if (searchResult.Count > 0)
+            TableDrawer.DrawTaskTable(table, searchResult);
+
+
+        var panel = new Panel(searchResult.Count > 0 ? table : new Markup("[red] Task list is empty );[/]"))
         {
-            string searchString = string.Join(" ", args);
+            Header = new PanelHeader("[bold yellow] Task List [/]").Centered(),
+            Border = BoxBorder.Rounded
+        };
 
-            List<TaskItem> tasks = _taskService.LoadTasks();
-            List<TaskItem> searchResult = tasks.Where(item => item.Title.Contains(searchString)).ToList();
-
-
-            // draw result table 
-            Table table = new();
-            if (searchResult.Count > 0)
-                TableDrawer.DrawTaskTable(table, searchResult);
-
-
-            var panel = new Panel(searchResult.Count > 0 ? table : new Markup("[red] Task list is empty );[/]"))
-            {
-                Header = new PanelHeader("[bold yellow] Task List [/]").Centered(),
-                Border = BoxBorder.Rounded
-            };
-
-            AnsiConsole.Write(panel);
-        }
+        AnsiConsole.Write(panel);
     }
 }

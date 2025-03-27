@@ -81,4 +81,9 @@ class TaskService
         else
             AnsiConsole.MarkupLine("[red]❌ Failed removing tasks. try again.[/]");
     }
+
+    public List<TaskItem> SearchTask(string searchString)
+    {
+        return _taskRepository.SearchTask(searchString);
+    }
 }
