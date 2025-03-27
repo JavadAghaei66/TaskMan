@@ -10,4 +10,5 @@ interface ITaskRepository
     bool RemoveByID(int taskID);
     bool RemoveAll();
     List<TaskItem> SearchTask(string searchString);
+    List<TaskItem> GetByPriority(Priority priority);
 }

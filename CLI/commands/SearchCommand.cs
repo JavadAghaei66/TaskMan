@@ -27,16 +27,11 @@ class SearchCommand : CommandBase
 
         // draw result table 
         Table table = new();
-        if (searchResult.Count > 0)
-            TableDrawer.DrawTaskTable(table, searchResult);
 
-
-        var panel = new Panel(searchResult.Count > 0 ? table : new Markup("[red] Task list is empty );[/]"))
-        {
-            Header = new PanelHeader("[bold yellow] Search Result [/]").Centered(),
-            Border = BoxBorder.Rounded
-        };
-
-        AnsiConsole.Write(panel);
+        TableDrawer.DrawTaskTable(
+            table: table,
+            tasks: searchResult,
+            pannelHeader: "Search Result"
+        );
     }
 }

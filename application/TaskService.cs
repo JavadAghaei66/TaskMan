@@ -86,4 +86,9 @@ class TaskService
     {
         return _taskRepository.SearchTask(searchString);
     }
+
+    public List<TaskItem> GetByPriority(Priority priority)
+    {
+        return _taskRepository.GetByPriority(priority);
+    }
 }

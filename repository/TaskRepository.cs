@@ -87,11 +87,17 @@ class TaskRepository : ITaskRepository
 
     public List<TaskItem> SearchTask(string searchString)
     {
-        List<TaskItem> searchResult = LoadTasks()
-        .Where(item => searchString.Split(' ').Any(word => Fuzz.PartialRatio(item.Title.ToLower(), word) > 70))
+        return LoadTasks()
+        .Where(item => searchString.Split(' ')
+        .Any(word => Fuzz.PartialRatio(item.Title.ToLower(), word) > 70))
         .ToList();
+    }
 
-        return searchResult;
+    public List<TaskItem> GetByPriority(Priority priority)
+    {
+        return LoadTasks()
+        .Where(task => task.Priority == priority)
+        .ToList();
     }
 
 }

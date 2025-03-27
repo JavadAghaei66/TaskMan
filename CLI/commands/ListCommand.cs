@@ -15,32 +15,53 @@ class ListCommand : CommandBase
 
     public override void Execute(string[] args)
     {
-        List<TaskItem> taskItems = _taskService.LoadTasks();
+        List<TaskItem> taskItems = [];
+        Table table = new();
 
         if (args.Length == 0)
         {
-            Table table = new();
+            taskItems = _taskService.LoadTasks();
 
-            if (taskItems.Count > 0)
-            {
-                TableDrawer.DrawTaskTable(table, taskItems);
-            }
+            TableDrawer.DrawTaskTable(
+                table: table,
+                tasks: taskItems,
+                pannelHeader: "Task List"
+            );
 
-            var panel = new Panel(taskItems.Count > 0 ? table : new Markup("[red] Task list is empty );[/]"))
-            {
-                Header = new PanelHeader("[bold yellow] Task List [/]").Centered(),
-                Border = BoxBorder.Rounded
-            };
-
-            AnsiConsole.Write(panel);
             return;
         }
 
-
         if (args.Length == 1 && (args[0] == "-high" || args[0] == "-h"))
         {
-            // list high priority if  needed
-            Console.WriteLine("loading high priority tasks...");
+            taskItems = _taskService.GetByPriority(Priority.High);
+
+            TableDrawer.DrawTaskTable(
+                table: table,
+                tasks: taskItems,
+                pannelHeader: "High Priority Tasks"
+            );
+            return;
+        }
+
+        if (args.Length == 1 && (args[0] == "-medium" || args[0] == "-m"))
+        {
+            taskItems = _taskService.GetByPriority(Priority.Medium);
+            TableDrawer.DrawTaskTable(
+                table: table,
+                tasks: taskItems,
+                pannelHeader: "Medium Priority Tasks"
+            );
+            return;
+        }
+
+        if (args.Length == 1 && (args[0] == "-low" || args[0] == "-l"))
+        {
+            taskItems = _taskService.GetByPriority(Priority.Low);
+            TableDrawer.DrawTaskTable(
+                table: table,
+                tasks: taskItems,
+                pannelHeader: "Low Priority Tasks"
+            );
             return;
         }
 
