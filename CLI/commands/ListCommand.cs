@@ -24,33 +24,11 @@ class ListCommand : CommandBase
             return;
         }
 
-        var table = new Table();
+        Table table = new();
 
         if (taskItems.Count > 0)
         {
-
-            table.AddColumn("[bold yellow]ID[/]");
-            table.AddColumn("[bold cyan]Title[/]");
-            table.AddColumn("[bold green]Description[/]");
-            table.AddColumn("[bold red]Priority[/]");
-            table.AddColumn("[bold blue]Due Date[/]");
-            table.AddColumn("[bold magenta]Completed[/]");
-
-            table.ShowRowSeparators();
-
-
-            foreach (var item in taskItems)
-            {
-                table.AddRow(
-                    item.Id.ToString(),
-                    item.Title,
-                    string.IsNullOrEmpty(item.Description) ? "No Description" : item.Description,
-                    $"[bold {GetPriorityColor(item.Priority)}]{item.Priority.ToString()}[/]",
-                    item.DueDate?.ToString("yyyy-MM-dd") ?? "[grey]No Due Date[/]",
-                    item.IsCompleted ? "[green]✔[/]" : "[red]✘[/]"
-                );
-            }
-
+            TableDrawer.DrawTaskTable(table,taskItems);
         }
 
         var panel = new Panel(taskItems.Count > 0 ? table : new Markup("[red] Task list is empty );[/]"))
@@ -60,16 +38,5 @@ class ListCommand : CommandBase
         };
 
         AnsiConsole.Write(panel);
-    }
-
-    private string GetPriorityColor(Priority priority)
-    {
-        return priority switch
-        {
-            Priority.Low => "green",
-            Priority.Medium => "yellow",
-            Priority.High => "red",
-            _ => "white"
-        };
     }
 }

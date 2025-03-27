@@ -11,6 +11,7 @@ class CommandHandler
             {"list",new ListCommand(taskService)},
             {"add",new AddCommand(taskService)},
             {"remove",new RemoveCommand(taskService)},
+            {"search",new SearchCommand(taskService)},
             {"exit",new ExitCommand()},
         };
     }
