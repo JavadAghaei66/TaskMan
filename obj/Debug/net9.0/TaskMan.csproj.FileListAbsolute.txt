@@ -19,3 +19,4 @@
 /home/javad/Projects/TaskMan/bin/Debug/net9.0/sv/Spectre.Console.Cli.resources.dll
 /home/javad/Projects/TaskMan/obj/Debug/net9.0/TaskMan.csproj.AssemblyReference.cache
 /home/javad/Projects/TaskMan/obj/Debug/net9.0/TaskMan.csproj.Up2Date
+/home/javad/Projects/TaskMan/bin/Debug/net9.0/FuzzySharp.dll

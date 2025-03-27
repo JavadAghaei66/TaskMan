@@ -1,6 +1,7 @@
 using System.Text.Json;
 using TaskMan.Domain;
 using TaskMan.Common;
+using FuzzySharp;
 
 namespace TaskMan.Repository;
 
@@ -87,7 +88,7 @@ class TaskRepository : ITaskRepository
     public List<TaskItem> SearchTask(string searchString)
     {
         List<TaskItem> searchResult = LoadTasks()
-        .Where(item => item.Title.Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+        .Where(item => searchString.Split(' ').Any(word => Fuzz.PartialRatio(item.Title.ToLower(), word) > 70))
         .ToList();
 
         return searchResult;

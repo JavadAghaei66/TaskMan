@@ -33,7 +33,7 @@ class SearchCommand : CommandBase
 
         var panel = new Panel(searchResult.Count > 0 ? table : new Markup("[red] Task list is empty );[/]"))
         {
-            Header = new PanelHeader("[bold yellow] Task List [/]").Centered(),
+            Header = new PanelHeader("[bold yellow] Search Result [/]").Centered(),
             Border = BoxBorder.Rounded
         };
 
