@@ -95,4 +95,8 @@ class TaskService
     public void ToggleTask(int index) {
         _taskRepository.ToggleTask(index);
     }
+
+    public List<TaskItem> GetCompleted() {
+        return _taskRepository.GetCompletedList();
+    }
 }

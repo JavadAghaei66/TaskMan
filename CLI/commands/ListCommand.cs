@@ -38,7 +38,8 @@ class ListCommand : CommandBase
         }
         else if (args.Length == 1 && args[0] == "--completed")
         {
-
+            taskItems = _taskService.GetCompleted();
+            header = "Completed Tasks";
         }
         else
         {

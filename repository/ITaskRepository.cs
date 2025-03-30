@@ -12,5 +12,5 @@ interface ITaskRepository
     List<TaskItem> SearchTask(string searchString);
     List<TaskItem> GetByPriority(Priority priority);
     bool ToggleTask(int index);
-    List<TaskItem> GetCompleted();
+    List<TaskItem> GetCompletedList();
 }

@@ -109,7 +109,7 @@ class TaskRepository : ITaskRepository
         return SaveTasks(tasks);
     }
 
-    public List<TaskItem> GetCompleted()
+    public List<TaskItem> GetCompletedList()
     {
         return LoadTasks().Where(task => task.IsCompleted).ToList();
     }
