@@ -3,7 +3,7 @@
     "Id": 1,
     "Title": "ad",
     "Description": "ad",
-    "IsCompleted": false,
+    "IsCompleted": true,
     "CompletedAt": null,
     "DueDate": "2025-04-18T00:56:47.6179739+03:30",
     "Priority": 0
@@ -30,7 +30,7 @@
     "Id": 4,
     "Title": "new 4",
     "Description": "new 4 description",
-    "IsCompleted": false,
+    "IsCompleted": true,
     "CompletedAt": null,
     "DueDate": "2025-04-19T17:06:35.0592837+03:30",
     "Priority": 2
@@ -39,7 +39,7 @@
     "Id": 5,
     "Title": "salam khoobi",
     "Description": "sa",
-    "IsCompleted": false,
+    "IsCompleted": true,
     "CompletedAt": null,
     "DueDate": "2025-04-18T17:57:44.6651446+03:30",
     "Priority": 2
@@ -48,9 +48,27 @@
     "Id": 6,
     "Title": "med",
     "Description": "medium",
-    "IsCompleted": false,
+    "IsCompleted": true,
     "CompletedAt": null,
     "DueDate": "2025-04-18T22:00:29.8434631+03:30",
+    "Priority": 1
+  },
+  {
+    "Id": 7,
+    "Title": "its new new",
+    "Description": "",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DueDate": "2025-04-19T04:56:18.190333+03:30",
+    "Priority": 2
+  },
+  {
+    "Id": 8,
+    "Title": "new is better",
+    "Description": "",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DueDate": "2025-08-01T00:00:00",
     "Priority": 1
   }
 ]

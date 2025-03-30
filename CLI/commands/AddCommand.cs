@@ -64,7 +64,7 @@ class AddCommand : CommandBase
 
             while (true)
             {
-                year = AnsiConsole.Ask<int>("[bold green]Enter year (e.g., 2025):[/]");
+                year = AnsiConsole.Ask<int>($"[bold green]Enter year (e.g., {DateTime.Now.Year}):[/]");
 
                 if (year >= DateTime.Now.Year)
                     break;

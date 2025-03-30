@@ -100,4 +100,12 @@ class TaskRepository : ITaskRepository
         .ToList();
     }
 
+    public bool ToggleTask(int index)
+    {
+        List<TaskItem> tasks = LoadTasks();
+
+        tasks[index].IsCompleted = !tasks[index].IsCompleted;
+
+        return SaveTasks(tasks);
+    }
 }

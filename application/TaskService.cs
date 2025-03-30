@@ -91,4 +91,8 @@ class TaskService
     {
         return _taskRepository.GetByPriority(priority);
     }
+
+    public void ToggleTask(int index) {
+        _taskRepository.ToggleTask(index);
+    }
 }

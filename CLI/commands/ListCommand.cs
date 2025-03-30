@@ -27,7 +27,6 @@ class ListCommand : CommandBase
             {"-low",Priority.Low} , {"-l",Priority.Low}
         };
 
-
         if (args.Length == 0)
         {
             taskItems = _taskService.LoadTasks();

@@ -11,4 +11,5 @@ interface ITaskRepository
     bool RemoveAll();
     List<TaskItem> SearchTask(string searchString);
     List<TaskItem> GetByPriority(Priority priority);
+    bool ToggleTask(int index);
 }
