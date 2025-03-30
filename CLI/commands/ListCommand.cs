@@ -36,6 +36,10 @@ class ListCommand : CommandBase
             taskItems = _taskService.GetByPriority(priority);
             header = $"{priority} Priority Tasks";
         }
+        else if (args.Length == 1 && args[0] == "--completed")
+        {
+
+        }
         else
         {
             AnsiConsole.MarkupLine($"[bold red]Invalid argument: '{args[0]}'[/]");
